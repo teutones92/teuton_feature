@@ -1,31 +1,72 @@
 import 'dart:io';
+
+import 'package:path/path.dart' as p;
+
 import 'commands/utils.dart';
+import 'config.dart';
+import 'templates/templates.dart';
+
+class CreateOptions {
+  final String feature;
+  final String? customPath; // Overrides config.featuresPath when provided
+  final String? template; // 'default' | 'minimal'
+  final bool dryRun;
+  final bool verbose;
+
+  const CreateOptions({
+    required this.feature,
+    this.customPath,
+    this.template,
+    this.dryRun = false,
+    this.verbose = false,
+  });
+}
 
 class FeatureGenerator {
-  void generate(String feature) {
-    final featurePascal = _toPascalCase(feature);
-    final basePath = 'lib/features/$feature';
+  FeatureGenerator({TeutonConfig? config})
+      : _config = config ?? TeutonConfig.load();
 
-    final dirs = [
-      'data/models',
-      'data/repositories',
-      'domain/entities',
-      'domain/repositories',
-      'domain/usecases',
-      'presentation/cubit',
-      'presentation/pages',
-    ];
+  final TeutonConfig _config;
 
-    for (var d in dirs) {
-      Directory('$basePath/$d').createSync(recursive: true);
+  void generate(CreateOptions options) {
+    final feature = options.feature.toLowerCase();
+    final baseRoot = options.customPath ?? _config.featuresPath;
+    final basePath = p.join(baseRoot, feature);
+    final selectedTemplate = options.template ?? _config.defaultTemplate;
+
+    if (options.verbose) {
+      printInfo('Using template: ${green(selectedTemplate)}');
+      printInfo('Target path: ${green(basePath)}');
     }
 
-    File('$basePath/domain/entities/${feature}_entity.dart').writeAsStringSync(
-      'class ${featurePascal}Entity { const ${featurePascal}Entity(); }',
-    );
-    printSuccess('Feature "$feature" creada en $basePath');
-  }
+    final files = switch (selectedTemplate) {
+      'minimal' => minimalTemplateFiles(feature),
+      _ => defaultTemplateFiles(feature),
+    };
 
-  String _toPascalCase(String text) =>
-      text.split('_').map((w) => w[0].toUpperCase() + w.substring(1)).join();
+    // Ensure directories exist
+    final dirs =
+        files.keys.map((rel) => p.dirname(p.join(basePath, rel))).toSet();
+
+    for (final dir in dirs) {
+      if (!options.dryRun) {
+        Directory(dir).createSync(recursive: true);
+      }
+      if (options.verbose) printInfo('Ensured dir: ${green(dir)}');
+    }
+
+    // Write files
+    var createdCount = 0;
+    files.forEach((rel, content) {
+      final filePath = p.join(basePath, rel);
+      if (!options.dryRun) {
+        File(filePath).writeAsStringSync(content);
+      }
+      createdCount++;
+      if (options.verbose) printSuccess('Wrote $rel');
+    });
+
+    printSuccess(
+        'Feature "$feature" ${options.dryRun ? 'simulated at' : 'created at'} $basePath ($createdCount files)');
+  }
 }

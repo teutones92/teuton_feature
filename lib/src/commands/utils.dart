@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:ansicolor/ansicolor.dart';
 
 final green = AnsiPen()..green(bold: true);
@@ -19,7 +21,9 @@ Available commands:
   ${green('create <name>')}   → Creates a new complete feature
   ${green('delete <name>')}   → Deletes an existing feature
   ${green('list')}            → Lists all created features
+  ${green('templates')}       → Lists available templates
   ${green('--help')}          → Shows this help
+  ${green('--version')}       → Shows CLI version
 
 Example:
   teuton_feature create profile

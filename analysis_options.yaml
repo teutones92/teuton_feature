@@ -1,0 +1,19 @@
+# Enable recommended lints for Dart packages
+include: package:lints/recommended.yaml
+
+linter:
+  rules:
+    # You can tweak or add rules over time. A few useful ones:
+    - always_declare_return_types
+    - avoid_print
+    - prefer_final_locals
+    - directives_ordering
+    - sort_pub_dependencies
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+  exclude:
+    - .dart_tool/**
+    - build/**

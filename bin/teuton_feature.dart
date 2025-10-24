@@ -1,11 +1,23 @@
 import 'package:teuton_feature/src/commands/create_command.dart';
 import 'package:teuton_feature/src/commands/delete_command.dart';
 import 'package:teuton_feature/src/commands/list_command.dart';
+import 'package:teuton_feature/src/commands/templates_command.dart';
 import 'package:teuton_feature/src/commands/utils.dart';
 
 void main(List<String> args) {
-  if (args.isEmpty || args.contains('--help')) {
+  if (args.isEmpty) {
     printHelp();
+    return;
+  }
+
+  // Handle global flags like --help and --version (without subcommand)
+  if (args.length == 1 && (args.first == '--help' || args.first == '-h')) {
+    printHelp();
+    return;
+  }
+  if (args.length == 1 && (args.first == '--version' || args.first == '-v')) {
+    // Best-effort manual version: keep in sync with pubspec.yaml
+    printInfo('teuton_feature version 1.2.0');
     return;
   }
 
@@ -21,6 +33,9 @@ void main(List<String> args) {
       break;
     case 'list':
       ListCommand().run(params);
+      break;
+    case 'templates':
+      TemplatesCommand().run(params);
       break;
     default:
       printError('Command "$command" not recognized.');
