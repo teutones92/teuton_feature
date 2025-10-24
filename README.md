@@ -41,6 +41,26 @@ Navigate to your Flutter project and run:
 teuton_feature create <feature_name>
 ```
 
+### Programmatic example
+
+If you prefer using the generator from Dart code (e.g. scripts/tools), there is a runnable example in `example/teuton_feature_example.dart` that uses the minimal template (no Flutter dependency required):
+
+```bash
+dart run example/teuton_feature_example.dart
+```
+
+This creates a temporary sandbox, generates a `profile` feature with the minimal template, and prints the files created. You can adapt this approach in your own tooling by importing:
+
+```dart
+import 'package:teuton_feature/teuton_feature.dart';
+
+final cfg = TeutonConfig(featuresPath: 'lib/features');
+FeatureGenerator(config: cfg).generate(const CreateOptions(
+  feature: 'profile',
+  template: 'minimal',
+));
+```
+
 ## 📖 Commands
 
 ### Create a Feature

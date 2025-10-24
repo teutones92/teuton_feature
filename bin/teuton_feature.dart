@@ -17,7 +17,7 @@ void main(List<String> args) {
   }
   if (args.length == 1 && (args.first == '--version' || args.first == '-v')) {
     // Best-effort manual version: keep in sync with pubspec.yaml
-    printInfo('teuton_feature version 1.2.0');
+    printInfo('teuton_feature version 1.2.3');
     return;
   }
 
