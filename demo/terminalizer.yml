@@ -1,0 +1,55 @@
+# Terminalizer recording for Teuton Feature CLI demo
+# Render: terminalizer play demo/terminalizer.yml
+# GIF:    terminalizer render demo/terminalizer.yml -o demo/teuton_feature.gif
+
+version: 2.0.0
+config:
+  command: zsh
+  cwd: "~"
+  env: {}
+  cols: 100
+  rows: 28
+  repeat: 1
+  # Typing speed; increase for slower typing
+  # typespeed is not officially supported in v2 config; playback honors delays below.
+
+records:
+  # Show version
+  - delay: 600
+    content: "$ teuton_feature --version\r\n"
+  - delay: 200
+    content: "ℹ️  teuton_feature version 1.2.0\r\n"
+
+  # Show help
+  - delay: 600
+    content: "$ teuton_feature --help\r\n"
+  - delay: 200
+    content: "🧩 Teuton Feature CLI\r\nTool for generating Flutter features with Clean Architecture + Cubit + GetIt.\r\n\r\nAvailable commands:\r\n  create <name>   → Creates a new complete feature\r\n  delete <name>   → Deletes an existing feature\r\n  list            → Lists all created features\r\n  templates       → Lists available templates\r\n  --help          → Shows this help\r\n  --version       → Shows CLI version\r\n\r\nExample:\r\n  teuton_feature create profile\r\n"
+
+  # Templates
+  - delay: 600
+    content: "$ teuton_feature templates\r\n"
+  - delay: 200
+    content: "ℹ️  Available templates (default: default):\r\n  - default: Full Clean Architecture: data/domain/presentation with Cubit and GetIt hooks (default)\r\n  - minimal: Minimal skeleton: entities, usecases, cubit, and a page\r\n"
+
+  # Create demo app directory
+  - delay: 600
+    content: "$ mkdir -p demo_app && cd demo_app\r\n"
+
+  # Create a feature (real generation for showcase)
+  - delay: 650
+    content: "$ teuton_feature create chat --template default --verbose\r\n"
+  - delay: 300
+    content: "ℹ️  Creating feature \"chat\"...\r\nℹ️  Using template: default\r\nℹ️  Target path: lib/features/chat\r\nℹ️  Ensured dir: lib/features/chat/domain/entities\r\nℹ️  Ensured dir: lib/features/chat/domain/repositories\r\nℹ️  Ensured dir: lib/features/chat/domain/usecases\r\nℹ️  Ensured dir: lib/features/chat/data/datasources\r\nℹ️  Ensured dir: lib/features/chat/data/models\r\nℹ️  Ensured dir: lib/features/chat/data/repositories\r\nℹ️  Ensured dir: lib/features/chat/presentation/cubit\r\nℹ️  Ensured dir: lib/features/chat/presentation/pages\r\nℹ️  Ensured dir: lib/features/chat\r\n✅ Wrote domain/entities/chat_entity.dart\r\n✅ Wrote domain/repositories/chat_repository.dart\r\n✅ Wrote domain/usecases/get_chat.dart\r\n✅ Wrote data/datasources/chat_remote_datasource.dart\r\n✅ Wrote data/datasources/chat_local_datasource.dart\r\n✅ Wrote data/models/chat_model.dart\r\n✅ Wrote data/repositories/chat_repository_impl.dart\r\n✅ Wrote presentation/cubit/chat_state.dart\r\n✅ Wrote presentation/cubit/chat_cubit.dart\r\n✅ Wrote presentation/pages/chat_page.dart\r\n✅ Wrote injection.dart\r\n✅ Wrote README.md\r\n✅ Feature \"chat\" created at lib/features/chat (12 files)\r\n"
+
+  # Show generated file tree (works if `tree` is installed; otherwise replace with `find`)
+  - delay: 650
+    content: "$ tree -I \"*.dart_tool|.git\" lib/features/chat\r\n"
+  - delay: 300
+    content: "lib/features/chat\r\n├── data\r\n│   ├── datasources\r\n│   │   ├── chat_local_datasource.dart\r\n│   │   └── chat_remote_datasource.dart\r\n│   ├── models\r\n│   │   └── chat_model.dart\r\n│   └── repositories\r\n│       └── chat_repository_impl.dart\r\n├── domain\r\n│   ├── entities\r\n│   │   └── chat_entity.dart\r\n│   ├── repositories\r\n│   │   └── chat_repository.dart\r\n│   └── usecases\r\n│       └── get_chat.dart\r\n├── injection.dart\r\n├── presentation\r\n│   ├── cubit\r\n│   │   ├── chat_cubit.dart\r\n│   │   └── chat_state.dart\r\n│   └── pages\r\n│       └── chat_page.dart\r\n└── README.md\r\n"
+
+  # List features
+  - delay: 600
+    content: "$ teuton_feature list\r\n"
+  - delay: 300
+    content: "ℹ️  Existing features:\r\n  - chat\r\n"
