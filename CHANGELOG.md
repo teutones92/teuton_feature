@@ -1,3 +1,8 @@
+## 1.2.3
+- Added verified publisher: teutondev.com
+- Minor metadata improvements and funding links added.
+
+
 # 1.2.0
 
 - ArgParser-based commands with options:

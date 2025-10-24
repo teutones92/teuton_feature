@@ -5,7 +5,7 @@
   "packages": [
     {
       "name": "teuton_feature",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "dependencies": [
         "ansicolor",
         "args",
@@ -371,7 +371,7 @@
     },
     {
       "name": "meta",
-      "version": "1.17.0",
+      "version": "1.16.0",
       "dependencies": []
     },
     {
