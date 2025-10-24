@@ -2,7 +2,6 @@
 [![GitHub Stars](https://img.shields.io/github/stars/teutones92/teuton_feature)](https://github.com/teutones92/teuton_feature)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Dart](https://img.shields.io/badge/SDK-%3E%3D3.0.0-blue.svg)](https://dart.dev)
-[![Demo GIF](https://img.shields.io/badge/demo-GIF-%23007ec6.svg)](demo/teuton_feature.gif)
 
 # 🧩 Teuton Feature CLI
 
@@ -149,30 +148,6 @@ templates:
 - **🏗️ Best Practices**: Implements proven Clean Architecture patterns
 - **🔧 Maintainable**: Clear separation of concerns makes code easy to modify
 - **📚 Educational**: Learn Clean Architecture through generated examples
-
-## 🎥 README demo GIF
-
-Generate and embed the animated demo:
-
-1) Install Terminalizer (one-time):
-```bash
-npm install -g terminalizer
-```
-
-2) Preview the scripted session:
-```bash
-terminalizer play demo/terminalizer.yml
-```
-
-3) Render the GIF:
-```bash
-terminalizer render demo/terminalizer.yml -o demo/teuton_feature.gif
-```
-
-Tip: If you don't have `tree`, use:
-```bash
-find lib/features/chat -print
-```
 
 ## 🤝 Contributing
 
