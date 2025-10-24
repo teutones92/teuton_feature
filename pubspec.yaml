@@ -17,7 +17,7 @@ dependencies:
   args: ^2.5.0
 
 executables:
-  teuton_feature: bin/teuton_feature.dart
+  teuton_feature:
 
 topics:
   - cli
