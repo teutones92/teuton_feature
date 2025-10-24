@@ -8,8 +8,6 @@
 
 A powerful CLI tool that generates **production-ready Flutter features** using **Clean Architecture**, **Cubit state management**, and **GetIt dependency injection** — in seconds.
 
-![Teuton Feature demo](demo/teuton_feature.gif)
-
 ## ✨ Features
 
 - 🏗️ **Clean Architecture** scaffolding with separation of concerns
