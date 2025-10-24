@@ -1,0 +1,28 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "ansicolor",
+      "rootUri": "file:///Users/teutondev/.pub-cache/hosted/pub.dev/ansicolor-2.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "args",
+      "rootUri": "file:///Users/teutondev/.pub-cache/hosted/pub.dev/args-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "teuton_feature",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    }
+  ],
+  "generator": "pub",
+  "generatorVersion": "3.9.2",
+  "flutterRoot": "file:///Users/teutondev/Documents/Databank/flutter",
+  "flutterVersion": "3.35.6",
+  "pubCache": "file:///Users/teutondev/.pub-cache"
+}
