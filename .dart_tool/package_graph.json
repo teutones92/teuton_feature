@@ -13,13 +13,13 @@
       "devDependencies": []
     },
     {
-      "name": "ansicolor",
-      "version": "2.0.3",
+      "name": "args",
+      "version": "2.7.0",
       "dependencies": []
     },
     {
-      "name": "args",
-      "version": "2.7.0",
+      "name": "ansicolor",
+      "version": "2.0.3",
       "dependencies": []
     }
   ],

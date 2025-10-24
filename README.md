@@ -1,3 +1,9 @@
+[![Pub Version](https://img.shields.io/pub/v/teuton_feature)](https://pub.dev/packages/teuton_feature)
+[![GitHub Stars](https://img.shields.io/github/stars/teutones92/teuton_feature)](https://github.com/teutones92/teuton_feature)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Dart](https://img.shields.io/badge/SDK-%3E%3D3.0.0-blue.svg)](https://dart.dev)
+
+
 # 🧩 Teuton Feature CLI
 
 A powerful CLI tool to generate **Flutter features** using **Clean Architecture**, **Cubit state management**, and **GetIt dependency injection** — in seconds.

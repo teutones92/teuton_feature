@@ -1,7 +1,14 @@
 name: teuton_feature
-description: CLI tool for generating Flutter Clean Architecture features with Cubit and GetIt.
+description: >
+  A CLI tool to generate Flutter features with Clean Architecture, Cubit state management, 
+  and GetIt dependency injection — instantly.
 version: 1.1.0
+
 repository: https://github.com/teutones92/teuton_feature
+homepage: https://teutondev.com/
+issue_tracker: https://github.com/teutones92/teuton_feature/issues
+documentation: https://pub.dev/documentation/teuton_feature/latest/
+
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
@@ -11,3 +18,10 @@ dependencies:
 
 executables:
   teuton_feature: bin/teuton_feature.dart
+
+topics:
+  - cli
+  - flutter
+  - clean-architecture
+  - cubit
+  - getit
