@@ -1,10 +1,11 @@
-
+/// Describes a template available for feature generation.
 class TemplateInfo {
   final String name;
   final String description;
   const TemplateInfo(this.name, this.description);
 }
 
+/// Built-in templates shipped with the package.
 const availableTemplates = <TemplateInfo>[
   TemplateInfo('default',
       'Full Clean Architecture: data/domain/presentation with Cubit and GetIt hooks'),
@@ -12,6 +13,7 @@ const availableTemplates = <TemplateInfo>[
       'minimal', 'Minimal skeleton: entities, usecases, cubit, and a page'),
 ];
 
+/// Converts a string like `user_profile` or `user-profile` to `UserProfile`.
 String toPascalCase(String text) {
   return text
       .split(RegExp(r'[_\-\s]+'))
@@ -20,6 +22,10 @@ String toPascalCase(String text) {
       .join();
 }
 
+/// Returns a file map for the "default" template of [feature].
+///
+/// Keys are relative file paths under the feature directory; values are file
+/// contents.
 Map<String, String> defaultTemplateFiles(String feature) {
   final pascal = toPascalCase(feature);
   return {
@@ -49,6 +55,7 @@ Map<String, String> defaultTemplateFiles(String feature) {
   };
 }
 
+/// Returns a file map for the "minimal" template of [feature].
 Map<String, String> minimalTemplateFiles(String feature) {
   final pascal = toPascalCase(feature);
   return {

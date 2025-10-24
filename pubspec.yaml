@@ -7,7 +7,7 @@ version: 1.2.3
 repository: https://github.com/teutones92/teuton_feature
 homepage: https://teutondev.com
 issue_tracker: https://github.com/teutones92/teuton_feature/issues
-documentation: https://pub.dev/documentation/teuton_feature/latest/
+documentation: https://github.com/teutones92/teuton_feature#readme
 publisher: teutondev.com
 
 environment:

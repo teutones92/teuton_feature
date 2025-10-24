@@ -3,7 +3,12 @@ import 'dart:io';
 import 'package:path/path.dart' as p;
 import 'package:yaml/yaml.dart';
 
+/// Configuration model for the Teuton Feature generator.
+///
+/// Values can be provided manually or loaded from a `teuton_config.yaml` at
+/// the project root via [TeutonConfig.load].
 class TeutonConfig {
+  /// Creates a config with optional overrides.
   TeutonConfig({
     String? featuresPath,
     String? defaultTemplate,
@@ -13,12 +18,23 @@ class TeutonConfig {
   })  : featuresPath = featuresPath ?? 'lib/features',
         defaultTemplate = defaultTemplate ?? 'default';
 
+  /// Base path where all features will be generated (e.g. `lib/features`).
   final String featuresPath;
+
+  /// Default template name used when none is specified (e.g. `default`).
   final String defaultTemplate;
+
+  /// Optional author metadata for templates.
   final String? author;
+
+  /// Optional organization/package ID for templates.
   final String? organization;
+
+  /// List of template names available to the generator.
   final List<String> templates;
 
+  /// Returns the full path to a given [feature] directory under
+  /// [featuresPath].
   String featurePath(String feature) => p.join(featuresPath, feature);
 
   TeutonConfig copyWith({
@@ -37,6 +53,9 @@ class TeutonConfig {
     );
   }
 
+  /// Loads configuration from a `teuton_config.yaml` file at [fromDir] (or the
+  /// current directory when omitted). Invalid or missing files fall back to
+  /// sensible defaults.
   static TeutonConfig load({String? fromDir}) {
     final root = fromDir ?? Directory.current.path;
     final file = File(p.join(root, 'teuton_config.yaml'));
